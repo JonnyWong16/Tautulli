@@ -28,7 +28,7 @@ import tempfile
 
 SCRIPT_PATH = os.path.dirname(os.path.abspath(__file__))
 CREATE_NO_WINDOW = 0x08000000
-REPO_URL = 'https://api.github.com/repos/Tautulli/Tautulli'
+REPO_URL = 'https://api.github.com/repos/JonnyWong16/Tautulli'
 
 LOGFILE = 'updater.log'
 LOGPATH = os.path.join(SCRIPT_PATH, LOGFILE)
