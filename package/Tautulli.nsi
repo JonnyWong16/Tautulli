@@ -125,19 +125,11 @@ Section -MainProgram
 Call UninstallPrevious
 
 ${INSTALL_TYPE}
-SetOverwrite on
+SetOverwrite ifnewer
 SetOutPath "$INSTDIR"
 File /nonfatal /a /r "..\dist\${APP_NAME}\"
 
-nsisXML::create
-nsisXML::load "$INSTDIR\TautulliUpdateTask.xml"
-nsisXML::select "/Task/Actions/Exec/Command"
-nsisXML::setText "$INSTDIR\updater.exe"
-nsisXML::select "/Task/Actions/Exec/WorkingDirectory"
-nsisXML::setText "$INSTDIR"
-nsisXML::save "$INSTDIR\TautulliUpdateTask.xml"
-nsisXML::release $0
-
+nsExec::Exec "$INSTDIR\updater.exe --xml"
 nsExec::Exec '$SYSDIR\SCHTASKS /Create /TN TautulliUpdateTask /XML "$INSTDIR\TautulliUpdateTask.xml" /F'
 
 StrCmp $norun 1 +3 0
