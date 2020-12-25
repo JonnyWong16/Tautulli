@@ -1,8 +1,7 @@
 name: Pull Requests
 
 on:
-  push:
-    pull_request: ~
+  pull_request: ~
 
 jobs:
   check-branch:
@@ -23,6 +22,6 @@ jobs:
       - name: Fail Workflow
         if: github.base_ref != 'refs/heads/nightly'
         run: |
-          echo $GITHUB_HEAD_REF
-          echo $GITHUB_BASE_REF
+          echo "Base: ${{ github.base_ref }}"
+          echo "Head: ${{ github.head_ref }}"
           exit 1
