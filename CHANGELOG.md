@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.6.5 (2020-12-22)
+
+* Other:
+  * New: Added auto update to Windows exe installs.
+
+
 ## v2.6.4 (2020-12-20)
 
 * Other:
