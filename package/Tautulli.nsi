@@ -125,7 +125,7 @@ Section -MainProgram
 Call UninstallPrevious
 
 ${INSTALL_TYPE}
-SetOverwrite ifnewer
+SetOverwrite on
 SetOutPath "$INSTDIR"
 File /nonfatal /a /r "..\dist\${APP_NAME}\"
 
@@ -268,7 +268,7 @@ Function UninstallPrevious
   ${EndIf}
   DetailPrint "Removing previous installation."
   ; Run the uninstaller silently.
-  ExecWait '"$R0" /S'
+  ExecWait '"$R0" /S _?=$INSTDIR'
   Done:
 FunctionEnd
 
