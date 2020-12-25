@@ -1,0 +1,24 @@
+name: Pull Requests
+
+on:
+  push:
+    pull_request: ~
+
+jobs:
+  check-branch:
+    name: Check Pull Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Comment on Pull Request
+        uses: thollander/actions-comment-pull-request@master
+        if: github.base_ref != 'nightly'
+        with:
+          message: 'Pull requests must be made to the `nightly` branch. Thanks.'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fail Workflow
+        if: github.base_ref != 'nightly'
+        run: exit 1
