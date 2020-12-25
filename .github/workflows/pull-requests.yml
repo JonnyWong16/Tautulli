@@ -23,6 +23,6 @@ jobs:
       - name: Fail Workflow
         if: github.base_ref != 'refs/heads/nightly'
         run: |
-          echo ${{ github.head_ref }}
-          echo ${{ github.base_ref }}
+          echo $GITHUB_HEAD_REF
+          echo $GITHUB_BASE_REF
           exit 1
