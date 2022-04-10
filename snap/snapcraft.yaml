@@ -1,4 +1,4 @@
-name: tautulli
+name: tautulli-test
 adopt-info: tautulli
 summary: A Python based monitoring and tracking tool for Plex Media Server.
 description: >
