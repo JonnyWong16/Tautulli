@@ -15,12 +15,16 @@ architectures:
   - build-on: arm64
   - build-on: armhf
 
+package-repositories:
+  - type: apt
+    ppa: deadsnakes/ppa
+
 parts:
   tautulli:
     plugin: dump
     source: .
     stage-packages:
-      - python3
+      - python3.9
       - python3-openssl
       - python3-pycryptodome
       - python3-setuptools
@@ -55,7 +59,7 @@ parts:
 
 apps:
   tautulli:
-    command: bin/python $SNAP/Tautulli.py --datadir $SNAP_USER_COMMON/Tautulli --config $SNAP_USER_COMMON/Tautulli/config.ini --quiet --nolaunch
+    command: bin/python3 $SNAP/Tautulli.py --datadir $SNAP_USER_COMMON/Tautulli --config $SNAP_USER_COMMON/Tautulli/config.ini --quiet --nolaunch
     daemon: simple
     restart-condition: on-abnormal
     restart-delay: 5s
