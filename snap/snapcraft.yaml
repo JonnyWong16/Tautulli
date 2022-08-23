@@ -56,7 +56,7 @@ parts:
       echo $COMMIT > version.txt
       snapcraftctl set-version "$VERSION"
       snapcraftctl set-grade "$GRADE"
-      ln -sf ../usr/bin/python3 $SNAPCRAFT_PART_INSTALL/bin/python3
+      ln -sf ../usr/bin/python3 /data/parts/tautulli/bin/python3
 
 apps:
   tautulli:
