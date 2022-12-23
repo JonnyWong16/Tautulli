@@ -16,8 +16,8 @@ jobs:
       matrix:
         architecture:
           - amd64
-          - arm64
-          - armhf
+          #- arm64
+          #- armhf
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3.2.0
