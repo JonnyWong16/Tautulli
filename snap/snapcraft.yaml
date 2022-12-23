@@ -35,36 +35,33 @@ parts:
     override-pull: |
       snapcraftctl pull
       git config --global --add safe.directory /data/parts/tautulli/src
-      TAG_FULL=$(git describe --tag)
-      echo $TAG_FULL
+      # TAG_FULL=$(git describe --tag)
+      # echo $TAG_FULL
+      TAG_FULL=v2.11.0-11-g609f59d5
       TAG=$(echo $TAG_FULL | grep -oP '(v\d+\.\d+\.\d+(?>-beta)?)')
-      # echo $TAG
-      # BRANCH=$(git rev-parse --abbrev-ref HEAD)
-      # echo $BRANCH
-      # COMMIT=$(git rev-parse HEAD)
-      # echo $COMMIT
-      # if [ "$TAG" = "$TAG_FULL" ]; then
-      #   VERSION=$TAG
-      # else
-      #   VERSION=$(echo $COMMIT | head -c 7)
-      # fi
-      # echo $VERSION
-      # if [ ! "$VERSION" = "$TAG" ] || [ ! "$VERSION" = "${VERSION%-beta}" ]; then
-      #   GRADE=devel
-      # else
-      #   GRADE=stable
-      # fi
-      # echo $GRADE
-      # if [ "$VERSION" = "$TAG" ] && [ ! "$VERSION" = "${VERSION%-beta}" ]; then
-      #   BRANCH=beta
-      # elif [ "$VERSION" = "$TAG" ]; then
-      #   BRANCH=master
-      # fi
-      # echo $BRANCH
-      BRANCH=nightly
-      COMMIT=4d6cb2e18bb1e6da932827621a6b3e5547c53132
-      VERSION=4d6cb2e
-      GRADE=devel
+      echo $TAG
+      BRANCH=$(git rev-parse --abbrev-ref HEAD)
+      echo $BRANCH
+      COMMIT=$(git rev-parse HEAD)
+      echo $COMMIT
+      if [ "$TAG" = "$TAG_FULL" ]; then
+        VERSION=$TAG
+      else
+        VERSION=$(echo $COMMIT | head -c 7)
+      fi
+      echo $VERSION
+      if [ ! "$VERSION" = "$TAG" ] || [ ! "$VERSION" = "${VERSION%-beta}" ]; then
+        GRADE=devel
+      else
+        GRADE=stable
+      fi
+      echo $GRADE
+      if [ "$VERSION" = "$TAG" ] && [ ! "$VERSION" = "${VERSION%-beta}" ]; then
+        BRANCH=beta
+      elif [ "$VERSION" = "$TAG" ]; then
+        BRANCH=master
+      fi
+      echo $BRANCH
       echo $BRANCH > branch.txt
       echo $COMMIT > version.txt
       snapcraftctl set-version "$VERSION"
