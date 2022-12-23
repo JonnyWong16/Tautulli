@@ -41,10 +41,12 @@ parts:
       # TAG=$(echo $TAG_FULL | grep -oP '(v\d+\.\d+\.\d+(?>-beta)?)')
       # echo $TAG
       TAG=v2.11.0
-      BRANCH=$(git rev-parse --abbrev-ref HEAD)
-      echo $BRANCH
-      COMMIT=$(git rev-parse HEAD)
-      echo $COMMIT
+      # BRANCH=$(git rev-parse --abbrev-ref HEAD)
+      # echo $BRANCH
+      BRANCH=nightly
+      # COMMIT=$(git rev-parse HEAD)
+      # echo $COMMIT
+      COMMIT=4d6cb2e18bb1e6da932827621a6b3e5547c53132
       if [ "$TAG" = "$TAG_FULL" ]; then
         VERSION=$TAG
       else
