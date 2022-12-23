@@ -7,7 +7,7 @@ description: >
   The only thing missing is "why they watched it", but who am I to question your 42 plays of Frozen. 
   All statistics are presented in a nice and clean interface with many tables and graphs, which makes it easy to brag about your server to everyone else.
 
-base: core22
+base: core20
 confinement: strict
 
 architectures:
@@ -36,19 +36,9 @@ parts:
       snapcraftctl pull
       git config --global --add safe.directory /data/parts/tautulli/src
       TAG_FULL=$(git describe --tag)
-      TAG_FULL=v2.5.2-1373-g4d6cb2e1
-      echo $(echo $TAG_FULL | grep -oP '(v\d+\.\d+\.\d+(?>-beta)?)')
-      # TAG=$(echo $TAG_FULL | grep -oP '(v\d+\.\d+\.\d+(?>-beta)?)')
-      # echo $TAG
-      TAG=v2.11.0
-      echo $(git rev-parse --abbrev-ref HEAD)
-      # BRANCH=$(git rev-parse --abbrev-ref HEAD)
-      # echo $BRANCH
-      BRANCH=nightly
-      echo $(git rev-parse HEAD)
-      # COMMIT=$(git rev-parse HEAD)
-      # echo $COMMIT
-      COMMIT=4d6cb2e18bb1e6da932827621a6b3e5547c53132
+      TAG=$(echo $TAG_FULL | grep -oP '(v\d+\.\d+\.\d+(?>-beta)?)')
+      BRANCH=$(git rev-parse --abbrev-ref HEAD)
+      COMMIT=$(git rev-parse HEAD)
       if [ "$TAG" = "$TAG_FULL" ]; then
         VERSION=$TAG
       else
