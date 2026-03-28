@@ -38,7 +38,7 @@ jobs:
         uses: docker/setup-qemu-action@v4
 
       - name: Build Snap Package
-        uses: diddlesnaps/snapcraft-multiarch-action@master
+        uses: canonical/snapcraft-multiarch-action@v1
         id: build
         with:
           architecture: ${{ matrix.architecture }}
