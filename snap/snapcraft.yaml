@@ -24,17 +24,13 @@ plugs:
 
 parts:
   tautulli:
-    plugin: dump
+    plugin: python
     source: .
     stage-packages:
-      - python3
       - python3-openssl
       - python3-cryptography
     build-packages:
       - git
-      - python3
-      - python3-openssl
-      - python3-cryptography
     override-pull: |
       craftctl default
       git config --global --add safe.directory /data/parts/tautulli/src
@@ -78,5 +74,4 @@ apps:
       - network-bind
       - removable-media
     environment:
-      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
       TAUTULLI_SNAP: "True"
