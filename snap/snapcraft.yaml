@@ -11,9 +11,12 @@ base: core24
 confinement: strict
 
 platforms:
-  - build-on: amd64
-  - build-on: arm64
-  - build-on: armhf
+  amd64:
+    build-on: amd64
+  arm64:
+    build-on: arm64
+  armhf:
+    build-on: armhf
 
 plugs:
   shared-memory:
